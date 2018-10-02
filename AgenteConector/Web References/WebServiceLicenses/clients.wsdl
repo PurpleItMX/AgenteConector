@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://127.0.0.1/soap/WebService Administrador ACBD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://127.0.0.1/soap/WebService Administrador ACBD" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://127.0.0.1/soap/WebService Administrador ACBD">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ClientsCompaniesRequest" />
+  <wsdl:message name="ClientsCompaniesResponse">
+    <wsdl:part name="return" type="xsd:Array" />
+  </wsdl:message>
+  <wsdl:portType name="WebService Administrador ACBDPortType">
+    <wsdl:operation name="ClientsCompanies">
+      <documentation>Servicio que retorna un array de Clientes con sus compaÃ±ias</documentation>
+      <wsdl:input message="tns:ClientsCompaniesRequest" />
+      <wsdl:output message="tns:ClientsCompaniesResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebService Administrador ACBDBinding" type="tns:WebService Administrador ACBDPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="ClientsCompanies">
+      <soap:operation soapAction="http://127.0.0.1/index.php/webservice/clients/ClientsCompanies" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService Administrador ACBD">
+    <wsdl:port name="WebService Administrador ACBDPort" binding="tns:WebService Administrador ACBDBinding">
+      <soap:address location="http://127.0.0.1:8000/index.php/webservice/clients" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
